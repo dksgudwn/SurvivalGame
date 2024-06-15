@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AgentMovement : MonoBehaviour
 {
     Rigidbody rb;
+    AgentAnimator _animator;
 
     [Header("Rotate")]
     public float mouseSpeed;
@@ -22,12 +24,17 @@ public class AgentMovement : MonoBehaviour
     public float playerHeight;
     bool grounded;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        _animator = GetComponent<AgentAnimator>();
+    }
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;   // 마우스 커서를 화면 안에서 고정
         Cursor.visible = false;                     // 마우스 커서를 보이지 않도록 설정
 
-        rb = GetComponent<Rigidbody>();             // Rigidbody 컴포넌트 가져오기
         rb.freezeRotation = true;                   // Rigidbody의 회전을 고정하여 물리 연산에 영향을 주지 않도록 설정
 
         cam = Camera.main;                          // 메인 카메라를 할당
@@ -70,6 +77,15 @@ public class AgentMovement : MonoBehaviour
 
         // 이동 벡터를 정규화하여 이동 속도와 시간 간격을 곱한 후 현재 위치에 더함
         transform.position += moveVec.normalized * moveSpeed * Time.deltaTime;
+
+        if (grounded && h != 0 || v != 0)
+        {
+            _animator.SetWalkAnimation(true);
+        }
+        else
+        {
+            _animator.SetWalkAnimation(false);
+        }
     }
     void Jump()
     {
