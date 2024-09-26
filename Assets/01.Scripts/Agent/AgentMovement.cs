@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class AgentMovement : MonoBehaviour
 {
     Rigidbody rb;
-    AgentAnimator _animator;
 
     [Header("Rotate")]
     public float mouseSpeed;
@@ -27,7 +26,6 @@ public class AgentMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        _animator = GetComponent<AgentAnimator>();
     }
 
     void Start()
@@ -78,14 +76,6 @@ public class AgentMovement : MonoBehaviour
         // 이동 벡터를 정규화하여 이동 속도와 시간 간격을 곱한 후 현재 위치에 더함
         transform.position += moveVec.normalized * moveSpeed * Time.deltaTime;
 
-        if (grounded && h != 0 || v != 0)
-        {
-            _animator.SetWalkAnimation(true);
-        }
-        else
-        {
-            _animator.SetWalkAnimation(false);
-        }
     }
     void Jump()
     {
