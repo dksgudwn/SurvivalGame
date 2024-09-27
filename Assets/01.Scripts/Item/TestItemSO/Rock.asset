@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4306f19d59390374185c17954a467b48, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Rock
   Image: {fileID: 0}
-  Description: 
-  Damage: 0
-  Range: 0
-  AttackSpeed: 0
+  Description: The Rock
+  Damage: 10
+  Range: 10
+  AttackSpeed: 1
