@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 {
 	private readonly float _gravity = -9.8f;
 
-	[SerializeField] private float walkSpeed, runSpeed, rotationSpeed, CameraMinX = -90f, CameraMaxX = 90f;
+	[SerializeField] private float walkSpeed, runSpeed, rotationSpeed, CameraMinAngle, CameraMaxAngle, MouseSensitivity = 100f;
 	[SerializeField] private Camera PlayerSight;
 
 	private CharacterController controller;
@@ -19,8 +19,8 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 	private Vector3 movementDirection;
 	private float verticalVelocity;
 
-	private float playerRotationX;
 	private float playerRotationY;
+	private float playerRotationX;
 
 	public void Initialize(Player player)
 	{
@@ -41,22 +41,26 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 	{
 		ApplyGravity();
 		MovementCharacter();
-		RotationCharacter();
+		RotateCamera();
+		RotateCharacter();
 	}
 
 	private void InputKeys()
 	{
 		// 추후 Input Reader로 수정할 수도 있음
 
-		movementDirection.x = Input.GetAxisRaw("Horizontal");
-		movementDirection.z = Input.GetAxisRaw("Vertical");
-		movementDirection = PlayerSight.transform.TransformDirection(movementDirection);
+		movementDirection.x = Input.GetAxis("Horizontal");
+		movementDirection.z = Input.GetAxis("Vertical");
+		//키 입력으로 이동 방향 받기
 
-		float mouseHorizontal = Input.GetAxisRaw("Mouse X") * rotationSpeed * Time.deltaTime;
-		float mouseVertical = Input.GetAxisRaw("Mouse Y") * rotationSpeed * Time.deltaTime;
+		movementDirection = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up) * movementDirection;
+		//틀어진 각도만큼 보정해 계산
 
-		playerRotationX -= mouseVertical;
-		playerRotationY += mouseHorizontal;
+		float mouseHorizontal = Input.GetAxis("Mouse X");
+		float mouseVertical = Input.GetAxis("Mouse Y");
+
+		playerRotationY += mouseVertical * MouseSensitivity * Time.deltaTime;
+		playerRotationX += mouseHorizontal * MouseSensitivity * Time.deltaTime;
 
 		if (Input.GetKeyDown(KeyCode.LeftShift)) IsRunning = true;
 		else if(Input.GetKeyUp(KeyCode.LeftShift)) IsRunning = false;
@@ -65,17 +69,22 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 	private void MovementCharacter()
 	{
 		float speed = IsRunning ? runSpeed : walkSpeed;
-		movementDirection *= speed * Time.fixedDeltaTime;
+		movementDirection *= speed;
 
-		controller.Move(movementDirection);
+		controller.Move(movementDirection * Time.fixedDeltaTime);
 	}
 
-	private void RotationCharacter()
+	private void RotateCharacter()
 	{
-		playerRotationX = Mathf.Clamp(playerRotationX, -CameraMinX, CameraMaxX);
+		transform.rotation = Quaternion.Euler(0, playerRotationX, 0);
+		//플레이어 모델 각도 회전
+	}
 
-		PlayerSight.transform.rotation = Quaternion.Euler(playerRotationX, playerRotationY, 0);
-		transform.rotation = Quaternion.Euler(0, playerRotationY, 0);
+	private void RotateCamera()
+	{
+		playerRotationY = Mathf.Clamp(playerRotationY, -CameraMinAngle, CameraMaxAngle);
+
+		PlayerSight.transform.rotation = Quaternion.Euler(-playerRotationY, playerRotationX, 0);
 	}
 
 	private void ApplyGravity()

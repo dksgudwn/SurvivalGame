@@ -492,8 +492,9 @@ MonoBehaviour:
   walkSpeed: 10
   runSpeed: 20
   rotationSpeed: 120
-  CameraMinX: -90
-  CameraMaxX: 25
+  CameraMinAngle: 25
+  CameraMaxAngle: 60
+  MouseSensitivity: 120
   PlayerSight: {fileID: 412786820}
 --- !u!114 &922854438
 MonoBehaviour:
