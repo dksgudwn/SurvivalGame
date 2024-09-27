@@ -110,6 +110,7 @@ public class StatModifier
 public class PlayerStatSO : ScriptableObject
 {
 	public List<StatData> Stats;
+	public Dictionary<Stat, StatData> StatDictionary = new Dictionary<Stat, StatData>();
 
 	private void OnEnable()
 	{
@@ -122,6 +123,20 @@ public class PlayerStatSO : ScriptableObject
 				Stats.Add(new StatData(0, (Stat)count));
 			}
 
+		}
+	}
+
+	public void InitializeStatDictionary()
+	{
+		if(Stats == null)
+		{
+			Debug.LogError($"Error: {this.name}'s Stat is null. Please check inpector.");
+		}
+
+		StatDictionary.Clear();
+		foreach(StatData data in Stats)
+		{
+			StatDictionary.Add(data.statType, data);
 		}
 	}
 }
