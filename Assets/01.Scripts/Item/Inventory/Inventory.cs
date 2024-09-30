@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
 
         foreach (var slot in _slots)
         {
-            if (slot.IsEmpty())
+            if (slot.IsEmpty)
             {
 
             }
