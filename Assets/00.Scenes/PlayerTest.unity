@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 966483165562229611}
   - component: {fileID: 847444224664669339}
   m_Layer: 0
-  m_Name: PlateSet1_Pants
+  m_Name: PlateSet_Pants
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2594,7 +2594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4053303704185981179}
   m_Layer: 0
-  m_Name: Plate1
+  m_Name: Plate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3076,7 +3076,7 @@ GameObject:
   - component: {fileID: 3264301512687110048}
   - component: {fileID: 1401533786350686534}
   m_Layer: 0
-  m_Name: PlateSet1_Boots
+  m_Name: PlateSet_Boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3093,7 +3093,7 @@ GameObject:
   - component: {fileID: 4650079494528251131}
   - component: {fileID: 1932234777117792172}
   m_Layer: 0
-  m_Name: PlateSet1_Shoulders
+  m_Name: PlateSet_Shoulders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5419,7 +5419,7 @@ GameObject:
   - component: {fileID: 1822328371514768505}
   - component: {fileID: 7130725041455391442}
   m_Layer: 0
-  m_Name: PlateSet1_Gloves
+  m_Name: PlateSet_Gloves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5466,7 +5466,7 @@ GameObject:
   - component: {fileID: 8474121571073610611}
   - component: {fileID: 4745062104530897011}
   m_Layer: 0
-  m_Name: PlateSet1_Chest
+  m_Name: PlateSet_Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5593,7 +5593,7 @@ GameObject:
   - component: {fileID: 2512990060456645458}
   - component: {fileID: 231014225778856840}
   m_Layer: 0
-  m_Name: PlateSet1_Helmet
+  m_Name: PlateSet_Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
