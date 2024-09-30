@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 922854435}
   - component: {fileID: 922854436}
   - component: {fileID: 922854438}
+  - component: {fileID: 922854439}
   - component: {fileID: 922854437}
   m_Layer: 0
   m_Name: Player
@@ -489,8 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6047e772233ae614990e506f32ae9a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
-  runSpeed: 20
+  runSpeedMultiply: 1.5
   rotationSpeed: 120
   CameraMinAngle: 25
   CameraMaxAngle: 60
@@ -508,6 +508,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65b59bea0a1a0147879cd1e44316764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &922854439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922854434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20b88376004f474289ed567c3acb745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseStatSO: {fileID: 11400000, guid: bb3c0090f685b6743a6677236df33344, type: 2}
+  InGameStatSO: {fileID: 0}
 --- !u!1 &6586937097125745
 GameObject:
   m_ObjectHideFlags: 0

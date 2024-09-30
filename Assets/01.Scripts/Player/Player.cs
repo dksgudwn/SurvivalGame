@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -11,16 +12,12 @@ public class Player : MonoBehaviour
 	{
 		_components = new Dictionary<Type, IPlayerComponent>();
 
-		IPlayerComponent[] comArr = GetComponentsInChildren<IPlayerComponent>();
-		foreach (var component in comArr)
-		{
-			_components.Add(component.GetType(), component);
-		}
+		GetComponentsInChildren<IPlayerComponent>().ToList()
+			.ForEach(compo => _components.Add(compo.GetType(), compo));
 
-		foreach (IPlayerComponent compo in _components.Values)
-		{
-			compo.Initialize(this);
-		}
+		_components.Values.ToList().ForEach(compo => compo.Initialize(this)); //컴포넌트 초기화 실행
+
+		_components.Values.ToList().ForEach(compo => compo.AfterInitialize()); //초기화 이후 실행
 	}
 
 	public T GetCompo<T>() where T : class

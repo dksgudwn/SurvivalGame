@@ -6,7 +6,13 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 {
 	private readonly float _gravity = -9.8f;
 
-	[SerializeField] private float walkSpeed, runSpeed, rotationSpeed, CameraMinAngle, CameraMaxAngle, MouseSensitivity = 100f;
+	[Header("Player Move Stat")]
+    [SerializeField][Range(1f, 5f)] private float runSpeedMultiply = 1.5f;
+    [SerializeField] private float rotationSpeed;
+	private float walkSpeed, runSpeed;
+
+    [Header("Player Cam")]
+	[SerializeField] private float CameraMinAngle, CameraMaxAngle, MouseSensitivity = 100f;
 	[SerializeField] private Camera PlayerSight;
 
 	private CharacterController controller;
@@ -15,6 +21,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 	public bool IsRunning {  get; private set; }
 
 	private Player _player;
+	private PlayerStatus status;
 
 	private Vector3 movementDirection;
 	private float verticalVelocity;
@@ -25,14 +32,21 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 	public void Initialize(Player player)
 	{
 		_player = player;
+        status = player.GetCompo<PlayerStatus>();
 
-		Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 
 		if (TryGetComponent(out controller) == false) Debug.LogError("Player ChacterController is Null");
 	}
 
-	private void Update()
+    public void AfterInitialize()
+    {
+        SetMovementSpeed();
+    }
+
+
+    private void Update()
 	{
 		InputKeys();
 	}
@@ -83,8 +97,8 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 	private void RotateCamera()
 	{
 		playerRotationY = Mathf.Clamp(playerRotationY, -CameraMinAngle, CameraMaxAngle);
-
 		PlayerSight.transform.rotation = Quaternion.Euler(-playerRotationY, playerRotationX, 0);
+		//카메라 회전
 	}
 
 	private void ApplyGravity()
@@ -97,5 +111,9 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 		movementDirection.y = verticalVelocity;
 	}
 
-
+	private void SetMovementSpeed()
+	{
+        walkSpeed = status.GetStatValue(Stat.MoveSpeed);
+        runSpeed = walkSpeed * runSpeedMultiply;
+    }
 }
