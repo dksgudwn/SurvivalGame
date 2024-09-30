@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour
 {
     [SerializeField] protected ItemSO _itemSO;
+    public ItemSO ItemSO => _itemSO;
 
     public abstract void Use();
 

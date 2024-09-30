@@ -6,8 +6,8 @@ using UnityEngine;
 public class ItemSO : ScriptableObject
 {
     public string Name;
-    public Sprite Image;
+    public Sprite Sprite;
     public string Description;
-
+    public int MaxSlot;
 
 }
