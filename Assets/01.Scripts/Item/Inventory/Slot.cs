@@ -8,9 +8,10 @@ public class Slot : MonoBehaviour
 
     public bool IsEmpty { get { return _slotItem == null; } }
 
-    public void SetItem(SlotItem slotItem)
+    public void SetItem(SlotItem slotItem, int count)
     {
         _slotItem = slotItem;
+        _slotItem.Initialize(_slotItem.Item);
     }
 
     public void DiscardItem()
