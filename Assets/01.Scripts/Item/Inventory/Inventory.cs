@@ -11,10 +11,15 @@ public class Inventory : MonoBehaviour
 
     public void PickupItem(Item item, int amount)
     {
-        
 
         foreach (var slot in _slots)
         {
+            if(slot.GetItem == item &&
+                !slot.IsFull)
+            {
+                slot.AddItem(amount);
+            }
+
             if (slot.IsEmpty)
             {
                 slot.SetItem(item, amount);
