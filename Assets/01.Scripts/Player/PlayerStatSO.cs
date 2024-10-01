@@ -66,7 +66,7 @@ public class StatData
             return true;
         }
 
-        Debug.LogError("Error: Modifier is not removed");
+        Debug.LogError("Error: Modifier is not removed : " + statType + "\nBase : " + baseValue + " Value: " + StatValue);
         return false;
     }
 

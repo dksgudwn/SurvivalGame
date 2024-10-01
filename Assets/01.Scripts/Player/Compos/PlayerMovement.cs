@@ -12,7 +12,9 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 	private float walkSpeed, runSpeed;
 
     [Header("Player Cam")]
-	[SerializeField] private float CameraMinAngle, CameraMaxAngle, MouseSensitivity = 100f;
+	[SerializeField] private float CameraMinAngle;
+    [SerializeField] private float CameraMaxAngle;
+	[SerializeField] private float MouseSensitivity = 100f;
 	[SerializeField] private Camera PlayerSight;
 
 	private CharacterController controller;
@@ -21,7 +23,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 	public bool IsRunning {  get; private set; }
 
 	private Player _player;
-	private PlayerStatus status;
+	private PlayerStatus Status;
 
 	private Vector3 movementDirection;
 	private float verticalVelocity;
@@ -32,7 +34,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 	public void Initialize(Player player)
 	{
 		_player = player;
-        status = player.GetCompo<PlayerStatus>();
+        Status = player.GetCompo<PlayerStatus>();
 
         Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
@@ -113,7 +115,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 
 	private void SetMovementSpeed()
 	{
-        walkSpeed = status.GetStatValue(Stat.MoveSpeed);
+        walkSpeed = Status.GetStatValue(Stat.MoveSpeed);
         runSpeed = walkSpeed * runSpeedMultiply;
     }
 }

@@ -428,6 +428,7 @@ GameObject:
   - component: {fileID: 922854438}
   - component: {fileID: 922854439}
   - component: {fileID: 922854437}
+  - component: {fileID: 922854440}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -522,6 +523,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseStatSO: {fileID: 11400000, guid: bb3c0090f685b6743a6677236df33344, type: 2}
   InGameStatSO: {fileID: 0}
+--- !u!114 &922854440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922854434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60977f96b8135bb40baa4a4278658c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6586937097125745
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,13 +767,14 @@ GameObject:
   m_Component:
   - component: {fileID: 966483165562229611}
   - component: {fileID: 847444224664669339}
+  - component: {fileID: 966483165562229612}
   m_Layer: 0
   m_Name: PlateSet_Pants
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!137 &389744249567344879
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -1303,6 +1317,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4053303704185981179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &966483165562229612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335084121030854002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ee49f7775d0e040baf3b40a11be1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmorKind: PlateSet
+  ArmorTag: 4
+  ArmorModifiers:
+  - ModifierStat: 0
+    ModifierValue: 5
+    IsPercent: 1
+  - ModifierStat: 5
+    ModifierValue: 5
+    IsPercent: 0
 --- !u!4 &1001119362787736876
 Transform:
   m_ObjectHideFlags: 0
@@ -1959,13 +1994,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3863108575082253664}
   - component: {fileID: 6967749782854295036}
+  - component: {fileID: 6967749782854295037}
   m_Layer: 0
   m_Name: Starter_Pants
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1724502716308021532
 GameObject:
   m_ObjectHideFlags: 0
@@ -3075,13 +3111,35 @@ GameObject:
   m_Component:
   - component: {fileID: 3264301512687110048}
   - component: {fileID: 1401533786350686534}
+  - component: {fileID: 3651224305500693997}
   m_Layer: 0
   m_Name: PlateSet_Boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &3651224305500693997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3651224305500693996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ee49f7775d0e040baf3b40a11be1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmorKind: PlateSet
+  ArmorTag: 0
+  ArmorModifiers:
+  - ModifierStat: 8
+    ModifierValue: 10
+    IsPercent: 1
+  - ModifierStat: 2
+    ModifierValue: 10
+    IsPercent: 0
 --- !u!1 &3668752272013511153
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,13 +3150,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4650079494528251131}
   - component: {fileID: 1932234777117792172}
+  - component: {fileID: 4650079494528251132}
   m_Layer: 0
   m_Name: PlateSet_Shoulders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &3680524113484936518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3637,6 +3696,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4053303704185981179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4650079494528251132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668752272013511153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ee49f7775d0e040baf3b40a11be1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmorKind: PlateSet
+  ArmorTag: 5
+  ArmorModifiers:
+  - ModifierStat: 6
+    ModifierValue: 20
+    IsPercent: 1
 --- !u!1 &4685493485882957387
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,13 +4297,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8366153774905383379}
   - component: {fileID: 441267306782738073}
+  - component: {fileID: 8366153774905383380}
   m_Layer: 0
   m_Name: Starter_Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5366249107841489815
 Transform:
   m_ObjectHideFlags: 0
@@ -5189,6 +5267,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.49471617, y: -0.02985686, z: -0.000000014901161}
     m_Extent: {x: 0.5068611, y: 0.16479233, z: 0.23511632}
   m_DirtyAABB: 0
+--- !u!114 &6967749782854295037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718314879790339746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ee49f7775d0e040baf3b40a11be1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmorKind: Starter
+  ArmorTag: 4
+  ArmorModifiers:
+  - ModifierStat: 5
+    ModifierValue: 3
+    IsPercent: 1
 --- !u!1 &6987457515249845974
 GameObject:
   m_ObjectHideFlags: 0
@@ -5418,13 +5514,35 @@ GameObject:
   m_Component:
   - component: {fileID: 1822328371514768505}
   - component: {fileID: 7130725041455391442}
+  - component: {fileID: 7332401106617308410}
   m_Layer: 0
   m_Name: PlateSet_Gloves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &7332401106617308410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332401106617308409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ee49f7775d0e040baf3b40a11be1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmorKind: PlateSet
+  ArmorTag: 2
+  ArmorModifiers:
+  - ModifierStat: 7
+    ModifierValue: 5
+    IsPercent: 1
+  - ModifierStat: 6
+    ModifierValue: 5
+    IsPercent: 0
 --- !u!4 &7391742065046044606
 Transform:
   m_ObjectHideFlags: 0
@@ -5465,13 +5583,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8474121571073610611}
   - component: {fileID: 4745062104530897011}
+  - component: {fileID: 8474121571073610612}
   m_Layer: 0
   m_Name: PlateSet_Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &7525447272168419900
 GameObject:
   m_ObjectHideFlags: 0
@@ -5592,13 +5711,32 @@ GameObject:
   m_Component:
   - component: {fileID: 2512990060456645458}
   - component: {fileID: 231014225778856840}
+  - component: {fileID: 7962947291772840655}
   m_Layer: 0
   m_Name: PlateSet_Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &7962947291772840655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962947291772840654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ee49f7775d0e040baf3b40a11be1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmorKind: PlateSet
+  ArmorTag: 3
+  ArmorModifiers:
+  - ModifierStat: 0
+    ModifierValue: 5
+    IsPercent: 1
 --- !u!4 &7984493642830243609
 Transform:
   m_ObjectHideFlags: 0
@@ -5798,13 +5936,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7391742065046044606}
   - component: {fileID: 8595648282333784590}
+  - component: {fileID: 8595648282333784591}
   m_Layer: 0
   m_Name: Starter_Boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &8271914381916512690
 GameObject:
   m_ObjectHideFlags: 0
@@ -5901,6 +6040,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6217630639070152131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8366153774905383380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5320119274313806989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ee49f7775d0e040baf3b40a11be1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmorKind: Starter
+  ArmorTag: 1
+  ArmorModifiers:
+  - ModifierStat: 4
+    ModifierValue: 3
+    IsPercent: 1
 --- !u!4 &8380172619740391910
 Transform:
   m_ObjectHideFlags: 0
@@ -5979,6 +6136,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4053303704185981179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8474121571073610612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7524180300266384376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ee49f7775d0e040baf3b40a11be1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmorKind: PlateSet
+  ArmorTag: 1
+  ArmorModifiers:
+  - ModifierStat: 0
+    ModifierValue: 5
+    IsPercent: 1
+  - ModifierStat: 4
+    ModifierValue: 5
+    IsPercent: 1
 --- !u!1 &8495071647580018136
 GameObject:
   m_ObjectHideFlags: 0
@@ -6131,6 +6309,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 1.0193741, y: -0.0038369, z: 0.003105253}
     m_Extent: {x: 0.085498184, y: 0.15606338, z: 0.2192167}
   m_DirtyAABB: 0
+--- !u!114 &8595648282333784591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8259856312648698539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ee49f7775d0e040baf3b40a11be1a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ArmorKind: Starter
+  ArmorTag: 0
+  ArmorModifiers:
+  - ModifierStat: 8
+    ModifierValue: 3
+    IsPercent: 0
 --- !u!1 &8646519668898781748
 GameObject:
   m_ObjectHideFlags: 0

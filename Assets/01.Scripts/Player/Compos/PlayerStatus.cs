@@ -60,11 +60,7 @@ public class PlayerStatus : MonoBehaviour, IPlayerComponent
     }
 
 	public void AddStatModifier(Stat modifierStat, StatModifier modifier)
-	{
-		if (InGameStatSO.StatDictionary.TryGetValue(modifierStat, out StatData data) == false) return;
-
-        data.AddModifier(modifier);
-	}
+		=> InGameStatSO.StatDictionary[modifierStat].AddModifier(modifier);
 
     public void RemoveStatModifier(Stat modifierStat, StatModifier modifier)
     {
