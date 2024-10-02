@@ -86,7 +86,7 @@ public class PlayerEquip : MonoBehaviour, IPlayerComponent
             return true;
         }
 
-        Debug.LogError("Can't find " + ArmorName.ToString());
+        Debug.Log("Can't find " + ArmorName.ToString());
         return false;
     }
 
@@ -97,6 +97,6 @@ public class PlayerEquip : MonoBehaviour, IPlayerComponent
 
     private void OnRemoveModifier(Stat modifyStat, StatModifier modifier)
     {
-        Status.RemoveStatModifier(modifyStat, modifier);
+        Status.RemoveAllModiiferInSource(modifyStat, modifier);
     }
 }

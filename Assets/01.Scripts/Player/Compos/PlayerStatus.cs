@@ -59,13 +59,26 @@ public class PlayerStatus : MonoBehaviour, IPlayerComponent
 		return data.StatValue;
     }
 
-	public void AddStatModifier(Stat modifierStat, StatModifier modifier)
-		=> InGameStatSO.StatDictionary[modifierStat].AddModifier(modifier);
-
-    public void RemoveStatModifier(Stat modifierStat, StatModifier modifier)
+	public void AddStatModifier(Stat modifyStat, StatModifier modifier)
     {
-        if (InGameStatSO.StatDictionary.TryGetValue(modifierStat, out StatData data) == false) return;
+		InGameStatSO.StatDictionary[modifyStat].AddModifier(modifier);
+
+		StatChangeActions[modifyStat]?.Invoke();
+    }
+
+    public void RemoveStatModifier(Stat modifyStat, StatModifier modifier)
+    {
+        if (InGameStatSO.StatDictionary.TryGetValue(modifyStat, out StatData data) == false) return;
 
         data.RemoveModifier(modifier);
+		StatChangeActions[modifyStat]?.Invoke();
+    }
+
+	public void RemoveAllModiiferInSource(Stat modifyStat, StatModifier modifier)
+	{
+        if (InGameStatSO.StatDictionary.TryGetValue(modifyStat, out StatData data) == false) return;
+
+		data.RemoveAllModifierInSource(modifier._Source);
+		StatChangeActions[modifyStat]?.Invoke();
     }
 }

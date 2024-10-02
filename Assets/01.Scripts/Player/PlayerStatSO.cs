@@ -56,6 +56,8 @@ public class StatData
     {
         isDirty = true;
         statModifiers.Add(modifier);
+
+        Debug.Log("Show Stat [" + statType + "]\nBase : " + baseValue + " Value: " + StatValue);
     }
 
     public bool RemoveModifier(StatModifier modifier)
@@ -84,6 +86,7 @@ public class StatData
             }
         }
 
+        Debug.Log("Show Stat [" + statType + "]\nBase : " + baseValue + " Value: " + StatValue);
         return didRemove;
     }
 

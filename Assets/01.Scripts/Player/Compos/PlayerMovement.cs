@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 
     public void AfterInitialize()
     {
+		Status.OnMoveSpeedChange += SetMovementSpeed;
         SetMovementSpeed();
     }
 
