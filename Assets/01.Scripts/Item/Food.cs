@@ -11,7 +11,12 @@ public class Food : Item
 
     private void Eat()
     {
-        FoodSO foodSO = (FoodSO)_itemSO;
+        FoodSO foodSO = _itemSO as FoodSO;
+
+        if(foodSO == null)
+        {
+            Debug.LogError($"{name} is not FoodSO");
+        }
 
         Debug.Log($"Eat. hp, hunger, stam recoverAmount : {foodSO.HealthRecoveryAmount} " +
             $"{foodSO.HungerRecoveryAmount} {foodSO.StaminaRecoveryAmount}");

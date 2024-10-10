@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
+    //private Item _item = null;
     private SlotItem _slotItem = null;
+    //private int _count = 0;
 
-    public bool IsEmpty { get { return _slotItem == null; } }
+    public SlotItem GetSlotItem { get { return _slotItem; } }
 
-    public void SetItem(SlotItem slotItem)
+    public void SpawnSlotItem(SlotItem prefab)
     {
-        _slotItem = slotItem;
-    }
-
-    public void DiscardItem()
-    {
-        _slotItem = null;
+        _slotItem = prefab;
+        Instantiate(prefab, Vector2.zero, Quaternion.identity, transform);
     }
 }

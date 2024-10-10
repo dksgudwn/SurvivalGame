@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SlotItem : MonoBehaviour, IDropHandler
 {
-    public Item Item { get; private set; }
+    [SerializeField] private Image _itemImage;
+    [SerializeField] private TextMeshProUGUI _itemCountTxt;
 
-    public void Initialize(Item item)
+
+
+    public void SetUI(Item item, int count)
     {
-        Item = item;
-        var image = GetComponent<Image>();
-        image.sprite = Item.ItemSO.Sprite;
+        _itemImage.sprite = item.ItemSO.Sprite;
+
+        _itemCountTxt.text = count.ToString();
     }
 
     public void OnDrop(PointerEventData eventData)
