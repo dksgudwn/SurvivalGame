@@ -9,5 +9,4 @@ public class ItemSO : ScriptableObject
     public Sprite Sprite;
     public string Description;
     public int MaxSlot;
-
 }

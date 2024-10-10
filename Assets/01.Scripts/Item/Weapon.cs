@@ -11,7 +11,12 @@ public class Weapon : Item
 
     private void Attack()
     {
-        WeaponSO weaponSO = (WeaponSO)_itemSO;
+        WeaponSO weaponSO = _itemSO as WeaponSO;
+
+        if (weaponSO == null)
+        {
+            Debug.LogError($"{name} is not WeaponSO");
+        }
 
         Debug.Log($"Attack. dmg : {weaponSO.Damage}");
     }
