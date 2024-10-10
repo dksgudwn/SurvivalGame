@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using UnityEngine;
 
@@ -13,8 +12,6 @@ public class PlayerEquip : MonoBehaviour, IPlayerComponent
 
     private Dictionary<string, Armor> PlayerArmors = new Dictionary<string, Armor>();
 
-    private StringBuilder ArmorName = new StringBuilder();
-
     public void Initialize(Player player)
     {
         _player = player;
@@ -22,21 +19,19 @@ public class PlayerEquip : MonoBehaviour, IPlayerComponent
 
         PlayerArmors = new Dictionary<string, Armor>();
 
-        GetComponentsInChildren<Armor>().ToList().ForEach(armor =>
+        foreach (var armor in GetComponentsInChildren<Armor>())
         {
             armor.EquipArmor(false);
+            PlayerArmors.TryAdd(armor.ArmorFullName(), armor); // C# 7.3 이상에서만 사용 가능
 
-            PlayerArmors.TryAdd(armor.ArmorFullName(), armor);
-
-            PlayerArmors[armor.ArmorFullName()].OnEquipArmor += OnAddModifier;
-            PlayerArmors[armor.ArmorFullName()].OnUnEquipArmor += OnRemoveModifier;
-        });
+            // 이벤트 구독
+            armor.OnEquipArmor += OnAddModifier;
+            armor.OnUnEquipArmor += OnRemoveModifier;
+        }
     }
 
     public void AfterInitialize()
     {
-        ArmorName = new StringBuilder();
-
         PlayerEquipArmor = new Dictionary<ArmorPartsTag, Armor>();
 
         for (int count = 0; count < (int)ArmorPartsTag.End; count++)
@@ -59,11 +54,10 @@ public class PlayerEquip : MonoBehaviour, IPlayerComponent
 
     public bool CheckEquipArmor(string armorKind, ArmorPartsTag part, bool IsEquip)
     {
-        ArmorName.Clear();
-        ArmorName.Append(armorKind).Append("_");
-        ArmorName.Append(part);
+        var armorName = new StringBuilder();
+        armorName.Append(armorKind).Append("_").Append(part);
 
-        if (PlayerArmors.TryGetValue(ArmorName.ToString(), out Armor BeEquipArmor) == true)
+        if (PlayerArmors.TryGetValue(armorName.ToString(), out Armor BeEquipArmor) == true)
         {
             if (IsEquip == true) // 장착하는 경우에
             {
@@ -82,21 +76,27 @@ public class PlayerEquip : MonoBehaviour, IPlayerComponent
             else if (IsEquip == false) PlayerEquipArmor[part] = null;
 
             BeEquipArmor.EquipArmor(IsEquip);
-            Debug.Log("Equip " + ArmorName.ToString());
+            Debug.Log("Equip " + armorName.ToString());
             return true;
         }
 
-        Debug.Log("Can't find " + ArmorName.ToString());
+        Debug.Log("Can't find " + armorName.ToString());
         return false;
     }
 
-    private void OnAddModifier(Stat modifyStat, StatModifier modifier)
+    private void OnAddModifier(object source, List<ItemModifierData> mods)
     {
-        Status.AddStatModifier(modifyStat, modifier);
+        foreach(ItemModifierData mod in mods)
+        {
+            Status.AddStatModifier(mod.ModifierStat, mod.PackgingValues(source));
+        }
     }
 
-    private void OnRemoveModifier(Stat modifyStat, StatModifier modifier)
+    private void OnRemoveModifier(object source, List<ItemModifierData> mods)
     {
-        Status.RemoveAllModiiferInSource(modifyStat, modifier);
+        foreach (ItemModifierData mod in mods)
+        {
+            Status.RemoveAllModifiersFromSource(mod.ModifierStat, mod.PackgingValues(source));
+        }
     }
 }

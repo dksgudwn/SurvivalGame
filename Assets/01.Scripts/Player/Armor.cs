@@ -38,8 +38,8 @@ public class Armor : MonoBehaviour
     [Header("Armor Modifier")]
     public List<ItemModifierData> ArmorModifiers;
 
-    public event Action<Stat, StatModifier> OnEquipArmor;
-    public event Action<Stat, StatModifier> OnUnEquipArmor;
+    public event Action<object, List<ItemModifierData>> OnEquipArmor;
+    public event Action<object, List<ItemModifierData>> OnUnEquipArmor;
 
     private bool IsAlreadyEquiped => gameObject.activeSelf;
 
@@ -58,17 +58,11 @@ public class Armor : MonoBehaviour
         {
             if(IsEquip == true)
             {
-                ArmorModifiers.ForEach(modifierData =>
-                {
-                    OnEquipArmor?.Invoke(modifierData.ModifierStat, modifierData.PackgingValues(this));
-                });
+                OnEquipArmor?.Invoke(this, ArmorModifiers);
             }
             if(IsEquip == false)
             {
-                ArmorModifiers.ForEach(modifierData =>
-                {
-                    OnUnEquipArmor?.Invoke(modifierData.ModifierStat, modifierData.PackgingValues(this));
-                });
+                OnUnEquipArmor?.Invoke(this, ArmorModifiers);
             }
 
             ArmorObject.SetActive(IsEquip);

@@ -44,7 +44,7 @@ public class PlayerInteraction : MonoBehaviour, IPlayerComponent
     private void ActionInteraction() // 상호작용 오브젝트의 상호작용 액션 실행
     {
         if(interactionObject == null) return;
-        if(Input.GetMouseButtonDown(0)) interactionObject.DoInteractionEvent();
+        if(Input.GetMouseButtonDown(1)) interactionObject.DoInteractionEvent();
     }
 
     private void OnDrawGizmos()

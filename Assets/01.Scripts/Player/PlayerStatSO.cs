@@ -23,7 +23,7 @@ public class StatData
     public float baseValue;
     public Stat statType;
 
-    private readonly List<StatModifier> statModifiers = new List<StatModifier>();
+    public readonly List<StatModifier> statModifiers = new List<StatModifier>();
 
     public StatData(float BaseValue, Stat InitStatType)
     {
@@ -72,7 +72,7 @@ public class StatData
         return false;
     }
 
-    public bool RemoveAllModifierInSource(object source)
+    public bool RemoveAllModifiersFromSource(object source)
     {
         bool didRemove = false;
 

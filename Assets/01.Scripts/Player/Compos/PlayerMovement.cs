@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
     public void AfterInitialize()
     {
 		Status.OnMoveSpeedChange += SetMovementSpeed;
-        SetMovementSpeed();
+		SetMovementSpeed(Status.InGameStatSO.StatDictionary[Stat.MoveSpeed]);
     }
 
 
@@ -111,9 +111,9 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 		movementDirection.y = verticalVelocity;
 	}
 
-	private void SetMovementSpeed()
+	private void SetMovementSpeed(StatData moveSpeed)
 	{
-        walkSpeed = Status.GetStatValue(Stat.MoveSpeed);
+        walkSpeed = moveSpeed.StatValue;
         runSpeed = walkSpeed * runSpeedMultiply;
     }
 }
