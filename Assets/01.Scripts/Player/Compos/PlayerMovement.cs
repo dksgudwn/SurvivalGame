@@ -36,9 +36,6 @@ public class PlayerMovement : MonoBehaviour, IPlayerComponent
 		_player = player;
         Status = player.GetCompo<PlayerStatus>();
 
-        Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
-
 		if (TryGetComponent(out controller) == false) Debug.LogError("Player ChacterController is Null");
 	}
 

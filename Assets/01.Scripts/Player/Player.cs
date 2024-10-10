@@ -10,7 +10,10 @@ public class Player : MonoBehaviour
 
 	private void Awake()
 	{
-		_components = new Dictionary<Type, IPlayerComponent>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        _components = new Dictionary<Type, IPlayerComponent>();
 
 		GetComponentsInChildren<IPlayerComponent>().ToList()
 			.ForEach(compo => _components.Add(compo.GetType(), compo));
